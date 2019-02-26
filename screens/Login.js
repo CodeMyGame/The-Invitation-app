@@ -63,7 +63,7 @@ export default class Login  extends React.Component {
     }, 1000);
     this.setState({ dialogVisible: true });
 
-    fetch('https://2factor.in/API/V1/b747baf3-1637-11e9-9ee8-0200cd936042/SMS/+91'+this.state.phone+'/AUTOGEN')
+    fetch(URL+this.state.phone+'/AUTOGEN')
     .then((response) => response.json())
     .then((responseJson) => {
         if(responseJson.Status=='Success'){
@@ -92,7 +92,7 @@ export default class Login  extends React.Component {
 
           }, 1000);
 
-          fetch('https://2factor.in/API/V1/b747baf3-1637-11e9-9ee8-0200cd936042/SMS/+91'+this.state.phone+'/AUTOGEN')
+          fetch(URL+this.state.phone+'/AUTOGEN')
           .then((response) => response.json())
           .then((responseJson) => {
               if(responseJson.Status=='Success'){
@@ -113,7 +113,7 @@ export default class Login  extends React.Component {
 
      sendInput(val){
        if(val!=''){
-         fetch('https://2factor.in/API/V1/b747baf3-1637-11e9-9ee8-0200cd936042/SMS/VERIFY/'+this.state.smsDetails+'/'+val)
+         fetch(URL+this.state.smsDetails+'/'+val)
          .then((response) => response.json())
          .then((responseJson) => {
              if(responseJson.Status=='Success' && responseJson.Details=='OTP Matched'){
